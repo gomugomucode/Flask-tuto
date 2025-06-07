@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask,render_template
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
@@ -18,7 +18,8 @@ class Todo(db.Model):
 
 @app.route("/")
 def hello_world():
-    return "<p>Hello, World!</p>"
+    todo =Todo(title="Todo title", desc="Todo description")
+    return render_template("index.html")
 
 @app.route("/products")
 def productpage():
